@@ -8,18 +8,25 @@ class User():
         self._access_lvl = "user"
 
 
-    def get_userinfo(self):
+    def set_id(self):
+        return self._id
+
+    def __repr__(self):
         return f"(id: {self._id}, name: {self._name}, access level: {self._access_lvl})"
 
 
 class Admin(User):
+
+    _list_of_users = []
+
     def __init__(self, name):
-        super().__init__(self, name)
+        super().__init__(name)
         self._access_lvl = "admin"
-        self._list_of_users = []
+        self._list_of_users.append(self)
+
 
     def add_user(self, user_name):
-        if isinstance(user_name, User):
+        if isinstance (user_name, User):
             new_user = user_name
         else:
             new_user = User(user_name)
@@ -32,11 +39,13 @@ class Admin(User):
             if user._id == id:
                  self._list_of_users.pop(i)
                  print("user deleted")
-            else: print(f"can't find user with id: {id}")
+                 return True
+        else: print(f"can't find user with id: {id}")
 
+    def __repr__(self):
+        return f"(id: {self._id}, name: {self._name}, access level: {self._access_lvl})"
 
-    def get_userinfo(self):
-        return self._list_of_users
-
-
+    @classmethod
+    def get_users(cls):
+        return cls._list_of_users
 

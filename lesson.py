@@ -20,7 +20,7 @@ class Bird():
 
 
 class Pigion(Bird):
-    def __init__(self,name, color, voice, favourite_food):
+    def __init__(self, name, color, voice, favourite_food):
         super().__init__(name, color, voice)
         self.favourite_food = favourite_food
 
