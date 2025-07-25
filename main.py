@@ -1,10 +1,8 @@
-class User():
-    def __init__(self, id, name, access_lvl):
-        self.id = id
-        self.name = name
-        self.access_lvl = access_lvl
+from users import User, Admin
 
+user_daniel = User("Daniel")
+user_sandra = User("Sandra")
+users_list = Admin.get_userinfo()
+print(users_list)
+print(user_daniel.get_userinfo())
 
-class Admin(User):
-    def __init__(self):
-        
